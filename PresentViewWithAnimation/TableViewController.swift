@@ -56,6 +56,18 @@ class TableViewController: UITableViewController {
                 transition.type = kCATransitionReveal
                 transition.subtype = kCATransitionFromRight //from left from bottom and from top also a sub
                 self.view.window!.layer.add(transition, forKey: kCATransition)
+        } else if(indexPath.row == 5){
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let alertController = storyBoard.instantiateViewController(withIdentifier: "model") as! ModelViewController
+//            alertController.delegate = self
+//            alertController.is_register = true
+//            alertController.categoryId = self.categoryID
+            alertController.providesPresentationContextTransitionStyle = true
+            alertController.definesPresentationContext = true
+            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            
+            self.present(alertController, animated: true, completion: nil)
         }
 
         let vc = storyboard?.instantiateViewController(withIdentifier: "VC1")
